@@ -67,13 +67,6 @@ services:
       - vectordb
     env_file:
       - .env
-  certbot:
-    image: certbot/certbot
-    container_name: certbot
-    volumes:
-      - ./certbot/conf:/etc/letsencrypt  # SSL証明書の保存場所
-      - ./certbot/www:/var/www/certbot   # Webroot用
-    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do sleep 6h & wait $${!}; certbot renew; done'"
 
 volumes:
   pgdata2:
